@@ -11,7 +11,7 @@ ALTER TABLE course_layout ADD CONSTRAINT PK_course_layout PRIMARY KEY (course_co
 
 CREATE TABLE department (
  department_name VARCHAR(2000) NOT NULL,
- manager VARCHAR(2000)
+ manager CHAR(10)
 );
 
 ALTER TABLE department ADD CONSTRAINT PK_department PRIMARY KEY (department_name);
