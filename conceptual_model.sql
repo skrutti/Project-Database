@@ -1,4 +1,6 @@
+DROP TABLE IF EXISTS course_layout;
 CREATE TABLE course_layout (
+ course_id INT NOT NULL AUTO_INCREMENT,
  course_code CHAR(6) NOT NULL,
  course_name VARCHAR(2000) NOT NULL,
  min_students INT,
@@ -6,9 +8,9 @@ CREATE TABLE course_layout (
  hp FLOAT
 );
 
-ALTER TABLE course_layout ADD CONSTRAINT PK_course_layout PRIMARY KEY (course_code);
+ALTER TABLE course_layout ADD CONSTRAINT PK_course_layout PRIMARY KEY (course_id);
 
-
+DROP TABLE IF EXISTS department;
 CREATE TABLE department (
  department_name VARCHAR(2000) NOT NULL,
  manager CHAR(10)
@@ -23,7 +25,7 @@ CREATE TABLE job_title (
 
 ALTER TABLE job_title ADD CONSTRAINT PK_job_title PRIMARY KEY (job_title);
 
-
+DROP TABLE IF EXISTS person;
 CREATE TABLE person (
  personal_number CHAR(12) NOT NULL,
  first_name VARCHAR(50),
@@ -33,7 +35,7 @@ CREATE TABLE person (
 
 ALTER TABLE person ADD CONSTRAINT PK_person PRIMARY KEY (personal_number);
 
-
+DROP TABLE IF EXISTS department;
 CREATE TABLE phone_number (
  phone_nr INT NOT NULL,
  personal_number CHAR(12) NOT NULL
