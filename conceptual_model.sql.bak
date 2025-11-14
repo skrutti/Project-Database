@@ -3,7 +3,7 @@ CREATE TABLE course_layout (
  course_name VARCHAR(2000) NOT NULL,
  min_students INT,
  max_students INT,
- hp FLOAT
+ hp FLOAT(2)
 );
 
 ALTER TABLE course_layout ADD CONSTRAINT PK_course_layout PRIMARY KEY (course_code);
@@ -26,9 +26,9 @@ ALTER TABLE job_title ADD CONSTRAINT PK_job_title PRIMARY KEY (job_title);
 
 CREATE TABLE person (
  personal_number CHAR(12) NOT NULL,
- first_name VARCHAR(50),
- last_name VARCHAR(50),
- address VARCHAR(50)
+ first_name CHAR(10),
+ last_name CHAR(10),
+ address CHAR(10)
 );
 
 ALTER TABLE person ADD CONSTRAINT PK_person PRIMARY KEY (personal_number);
@@ -63,7 +63,7 @@ ALTER TABLE course_instance ADD CONSTRAINT PK_course_instance PRIMARY KEY (insta
 
 CREATE TABLE employee (
  employment_id CHAR(10) NOT NULL,
- salary INT,
+ salary CHAR(10),
  supervisor CHAR(10),
  department_name VARCHAR(2000) NOT NULL,
  personal_number CHAR(12) NOT NULL,
@@ -84,7 +84,7 @@ ALTER TABLE planned_activity ADD CONSTRAINT PK_planned_activity PRIMARY KEY (act
 
 
 CREATE TABLE skill_set (
- skill VARCHAR(50) NOT NULL,
+ skill VARCHAR(2000) NOT NULL,
  employment_id CHAR(10) NOT NULL
 );
 
