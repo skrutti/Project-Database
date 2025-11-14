@@ -121,3 +121,12 @@ ALTER TABLE employee_activity ADD CONSTRAINT FK_employee_activity_0 FOREIGN KEY 
 ALTER TABLE employee_activity ADD CONSTRAINT FK_employee_activity_1 FOREIGN KEY (employment_id) REFERENCES employee (employment_id);
 
 
+--DATA should be moved to second file
+
+INSERT INTO course_layout (course_code,course_name,min_students,max_students,numberrange)
+VALUES
+  ('EP1406','ante. Vivamus non lorem vitae odio sagittis semper.',40,143,'6'),
+  ('XD2447','erat neque',31,96,'7.5'),
+  ('FC5140','eleifend non, dapibus',51,145,'6'),
+  ('MT3223','et libero. Proin mi. Aliquam gravida mauris ut mi.',45,128,'7.5'),
+  ('OE3721','cursus vestibulum. Mauris magna. Duis dignissim tempor arcu.',52,138,'7.5');
