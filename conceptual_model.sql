@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS course_layout;
+
 CREATE TABLE course_layout (
  course_id INT NOT NULL AUTO_INCREMENT,
  course_code CHAR(6) NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE person (
 
 ALTER TABLE person ADD CONSTRAINT PK_person PRIMARY KEY (personal_number);
 
-DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS phone_number;
 CREATE TABLE phone_number (
  phone_nr INT NOT NULL,
  personal_number CHAR(12) NOT NULL
@@ -44,6 +45,7 @@ CREATE TABLE phone_number (
 ALTER TABLE phone_number ADD CONSTRAINT PK_phone_number PRIMARY KEY (phone_nr);
 
 
+DROP TABLE IF EXISTS teaching_activity;
 CREATE TABLE teaching_activity (
  activity_name VARCHAR(20) NOT NULL,
  factor FLOAT(2)
@@ -52,6 +54,7 @@ CREATE TABLE teaching_activity (
 ALTER TABLE teaching_activity ADD CONSTRAINT PK_teaching_activity PRIMARY KEY (activity_name);
 
 
+DROP TABLE IF EXISTS course_instance;
 CREATE TABLE course_instance (
  instance_id CHAR(10) NOT NULL,
  num_students INT,
@@ -63,6 +66,7 @@ CREATE TABLE course_instance (
 ALTER TABLE course_instance ADD CONSTRAINT PK_course_instance PRIMARY KEY (instance_id);
 
 
+DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
  employment_id CHAR(10) NOT NULL,
  salary INT,
@@ -75,6 +79,7 @@ CREATE TABLE employee (
 ALTER TABLE employee ADD CONSTRAINT PK_employee PRIMARY KEY (employment_id);
 
 
+DROP TABLE IF EXISTS planned_activity;
 CREATE TABLE planned_activity (
  activity_id INT NOT NULL,
  planned_hours INT,
@@ -85,6 +90,7 @@ CREATE TABLE planned_activity (
 ALTER TABLE planned_activity ADD CONSTRAINT PK_planned_activity PRIMARY KEY (activity_id);
 
 
+DROP TABLE IF EXISTS skill_set;
 CREATE TABLE skill_set (
  skill VARCHAR(50) NOT NULL,
  employment_id CHAR(10) NOT NULL
@@ -93,6 +99,7 @@ CREATE TABLE skill_set (
 ALTER TABLE skill_set ADD CONSTRAINT PK_skill_set PRIMARY KEY (skill,employment_id);
 
 
+DROP TABLE IF EXISTS employee_activity;
 CREATE TABLE employee_activity (
  activity_id INT NOT NULL,
  employment_id CHAR(10) NOT NULL
