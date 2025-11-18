@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS course_layout;
+DROP TABLE IF EXISTS course_layout CASCADE;
 
 CREATE TABLE course_layout (
- course_id INT NOT NULL AUTO_INCREMENT,
+ course_id SERIAL,
  course_code CHAR(6) NOT NULL,
  course_name VARCHAR(2000) NOT NULL,
  min_students INT,
@@ -11,7 +11,8 @@ CREATE TABLE course_layout (
 
 ALTER TABLE course_layout ADD CONSTRAINT PK_course_layout PRIMARY KEY (course_id);
 
-DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS department CASCADE;
+
 CREATE TABLE department (
  department_name VARCHAR(2000) NOT NULL,
  manager CHAR(10)
@@ -19,6 +20,7 @@ CREATE TABLE department (
 
 ALTER TABLE department ADD CONSTRAINT PK_department PRIMARY KEY (department_name);
 
+DROP TABLE IF EXISTS job_title CASCADE;
 
 CREATE TABLE job_title (
  job_title VARCHAR(20) NOT NULL
@@ -26,7 +28,7 @@ CREATE TABLE job_title (
 
 ALTER TABLE job_title ADD CONSTRAINT PK_job_title PRIMARY KEY (job_title);
 
-DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS person CASCADE;
 CREATE TABLE person (
  personal_number CHAR(12) NOT NULL,
  first_name VARCHAR(50),
@@ -36,7 +38,7 @@ CREATE TABLE person (
 
 ALTER TABLE person ADD CONSTRAINT PK_person PRIMARY KEY (personal_number);
 
-DROP TABLE IF EXISTS phone_number;
+DROP TABLE IF EXISTS phone_number CASCADE;
 CREATE TABLE phone_number (
  phone_nr INT NOT NULL,
  personal_number CHAR(12) NOT NULL
@@ -45,7 +47,7 @@ CREATE TABLE phone_number (
 ALTER TABLE phone_number ADD CONSTRAINT PK_phone_number PRIMARY KEY (phone_nr);
 
 
-DROP TABLE IF EXISTS teaching_activity;
+DROP TABLE IF EXISTS teaching_activity CASCADE;
 CREATE TABLE teaching_activity (
  activity_name VARCHAR(20) NOT NULL,
  factor FLOAT(2)
@@ -54,19 +56,19 @@ CREATE TABLE teaching_activity (
 ALTER TABLE teaching_activity ADD CONSTRAINT PK_teaching_activity PRIMARY KEY (activity_name);
 
 
-DROP TABLE IF EXISTS course_instance;
+DROP TABLE IF EXISTS course_instance CASCADE;
 CREATE TABLE course_instance (
  instance_id CHAR(10) NOT NULL,
  num_students INT,
  study_period CHAR(2),
  study_year INT,
- course_code CHAR(6) NOT NULL
+ course_id INT NOT NULL
 );
 
 ALTER TABLE course_instance ADD CONSTRAINT PK_course_instance PRIMARY KEY (instance_id);
 
 
-DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS employee CASCADE;
 CREATE TABLE employee (
  employment_id CHAR(10) NOT NULL,
  salary INT,
@@ -79,7 +81,7 @@ CREATE TABLE employee (
 ALTER TABLE employee ADD CONSTRAINT PK_employee PRIMARY KEY (employment_id);
 
 
-DROP TABLE IF EXISTS planned_activity;
+DROP TABLE IF EXISTS planned_activity CASCADE;
 CREATE TABLE planned_activity (
  activity_id INT NOT NULL,
  planned_hours INT,
@@ -90,7 +92,7 @@ CREATE TABLE planned_activity (
 ALTER TABLE planned_activity ADD CONSTRAINT PK_planned_activity PRIMARY KEY (activity_id);
 
 
-DROP TABLE IF EXISTS skill_set;
+DROP TABLE IF EXISTS skill_set CASCADE;
 CREATE TABLE skill_set (
  skill VARCHAR(50) NOT NULL,
  employment_id CHAR(10) NOT NULL
@@ -99,7 +101,7 @@ CREATE TABLE skill_set (
 ALTER TABLE skill_set ADD CONSTRAINT PK_skill_set PRIMARY KEY (skill,employment_id);
 
 
-DROP TABLE IF EXISTS employee_activity;
+DROP TABLE IF EXISTS employee_activity CASCADE;
 CREATE TABLE employee_activity (
  activity_id INT NOT NULL,
  employment_id CHAR(10) NOT NULL
@@ -111,7 +113,7 @@ ALTER TABLE employee_activity ADD CONSTRAINT PK_employee_activity PRIMARY KEY (a
 ALTER TABLE phone_number ADD CONSTRAINT FK_phone_number_0 FOREIGN KEY (personal_number) REFERENCES person (personal_number);
 
 
-ALTER TABLE course_instance ADD CONSTRAINT FK_course_instance_0 FOREIGN KEY (course_code) REFERENCES course_layout (course_code);
+ALTER TABLE course_instance ADD CONSTRAINT FK_course_instance_0 FOREIGN KEY (course_id) REFERENCES course_layout (course_id);
 
 
 ALTER TABLE employee ADD CONSTRAINT FK_employee_0 FOREIGN KEY (department_name) REFERENCES department (department_name);
@@ -132,7 +134,7 @@ ALTER TABLE employee_activity ADD CONSTRAINT FK_employee_activity_1 FOREIGN KEY 
 
 --DATA should be moved to second file
 
-INSERT INTO course_layout (course_code,course_name,min_students,max_students,numberrange)
+INSERT INTO course_layout (course_code,course_name,min_students,max_students,hp)
 VALUES
   ('EP1406','ante. Vivamus non lorem vitae odio sagittis semper.',40,143,'6'),
   ('XD2447','erat neque',31,96,'7.5'),
