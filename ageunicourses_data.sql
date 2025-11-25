@@ -10,7 +10,16 @@ INSERT INTO course_layout (course_id, course_code, course_name, min_students, ma
 (8, 'OP9012', 'Linear Algebra', 55, 160, 7.0),
 (9, 'QR3456', 'Programming Fundamentals', 40, 150, 5.0),
 (10, 'ST7890', 'Human-Computer Interaction', 25, 80, 6.0),
-(11, 'XD2447', 'erat neque', 30, 90, 7.5);
+(11, 'XD2447', 'erat neque', 30, 90, 7.5),
+(12, 'WX5678', 'Operating Systems', 45, 150, 8.0),
+(13, 'YZ9012', 'Artificial Intelligence', 35, 100, 9.0),
+(14, 'BC3456', 'Machine Learning', 30, 80, 8.5),
+(15, 'DE7890', 'Data Science', 40, 120, 7.0),
+(16, 'FG1234', 'Cloud Computing', 35, 100, 6.5),
+(17, 'HI5678', 'Cybersecurity', 25, 70, 7.5),
+(18, 'JK9012', 'Mobile Development', 30, 90, 6.0),
+(19, 'LM3456', 'Software Testing', 40, 110, 5.5),
+(20, 'NP7890', 'Project Management', 50, 150, 6.0);
 
 -- Insert data into department
 INSERT INTO department (department_id, department_name, manager) VALUES
@@ -25,7 +34,8 @@ INSERT INTO job_title (job_title_id, job_title_name) VALUES
 (2, 'Associate Professor'),
 (3, 'Assistant Professor'),
 (4, 'PhD Student'),
-(5, 'Lecturer');
+(5, 'Lecturer'),
+(6, 'Teaching Assistant');  
 
 -- Insert data into person
 INSERT INTO person (personal_number, first_name, last_name, address) VALUES
@@ -36,7 +46,11 @@ INSERT INTO person (personal_number, first_name, last_name, address) VALUES
 ('198905055678', 'Eva', 'Eriksson', 'Cedar Drive 234'),
 ('199006066789', 'Fredrik', 'Fredriksson', 'Elm Street 567'),
 ('199107077890', 'Gunilla', 'Gustafsson', 'Willow Way 89'),
-('199208088901', 'Henrik', 'Henriksson', 'Spruce Court 123');
+('199208088901', 'Henrik', 'Henriksson', 'Spruce Court 123'),
+('199309099012', 'Ida', 'Isaksson', 'Pine Street 456'),      -- New TA
+('199410101123', 'Johan', 'Johansson', 'Oak Avenue 789'),    -- New TA
+('199511111234', 'Karin', 'Karlsson', 'Birch Road 123'),     -- New TA
+('199612121345', 'Lars', 'Larsson', 'Maple Lane 456');       -- New TA
 
 -- Insert data into phone_number
 INSERT INTO phone_number (phone_nr, personal_number) VALUES
@@ -47,7 +61,11 @@ INSERT INTO phone_number (phone_nr, personal_number) VALUES
 (567890123, '198905055678'),
 (678901234, '199006066789'),
 (789012345, '199107077890'),
-(890123456, '199208088901');
+(890123456, '199208088901'),
+(901234567, '199309099012'),  -- New TA
+(112233445, '199410101123'),  -- New TA
+(223344556, '199511111234'),  -- New TA
+(334455667, '199612121345');  -- New TA
 
 -- Insert data into study_period
 INSERT INTO study_period (period) VALUES
@@ -78,7 +96,16 @@ INSERT INTO course_instance (instance_id, num_students, study_year, course_id, p
 ('2025-89012', 140, 2025, 8, 'P1'),
 ('2025-90123', 85, 2025, 9, 'P4'),
 ('2025-01234', 70, 2025, 10, 'P2'),
-('2025-93857', 45, 2025, 11, 'P1');
+('2025-11235', 45, 2025, 11, 'P3'),
+('2025-22346', 110, 2025, 12, 'P1'),
+('2025-33457', 65, 2025, 13, 'P4'),
+('2025-44568', 80, 2025, 14, 'P2'),
+('2025-55679', 105, 2025, 15, 'P3'),
+('2025-66780', 75, 2025, 16, 'P1'),
+('2025-77891', 60, 2025, 17, 'P4'),
+('2025-88902', 85, 2025, 18, 'P2'),
+('2025-99013', 95, 2025, 19, 'P3'),
+('2025-10124', 120, 2025, 20, 'P1');
 
 -- Insert data into employee
 INSERT INTO employee (employment_id, salary, supervisor, personal_number, department_id, job_title_id) VALUES
@@ -89,7 +116,11 @@ INSERT INTO employee (employment_id, salary, supervisor, personal_number, depart
 ('EMP005', 45000, 'EMP002', '198905055678', 2, 4),
 ('EMP006', 48000, 'EMP003', '199006066789', 3, 5),
 ('EMP007', 52000, 'EMP004', '199107077890', 4, 3),
-('EMP008', 47000, 'EMP004', '199208088901', 4, 4);
+('EMP008', 47000, 'EMP004', '199208088901', 4, 4),
+('EMP009', 35000, 'EMP001', '199309099012', 1, 6),  -- New TA
+('EMP010', 36000, 'EMP002', '199410101123', 2, 6),  -- New TA
+('EMP011', 34000, 'EMP003', '199511111234', 3, 6),  -- New TA
+('EMP012', 35500, 'EMP004', '199612121345', 4, 6);  -- New TA
 
 -- Insert data into planned_activity
 INSERT INTO planned_activity (activity_id, instance_id, planned_hours, teaching_id) VALUES
@@ -137,7 +168,27 @@ INSERT INTO planned_activity (activity_id, instance_id, planned_hours, teaching_
 (40, '2025-93857', 10, 6),  -- Admin for Erat Neque
 (41, '2025-93857', 63, 1),  -- Lectures for Erat Neque
 (42, '2025-93857', 40, 2),  -- Labs for Erat Neque
-(43, '2025-93857', 1444, 3);  -- Tutorial for Erat Neque
+(43, '2025-93857', 1444, 3),  -- Tutorial for Erat Neque
+(44, '2025-11235', 30, 1),   -- Lecture for Computer Networks
+(45, '2025-11235', 40, 2),   -- Lab for Computer Networks
+(46, '2025-22346', 35, 1),   -- Lecture for Operating Systems
+(47, '2025-22346', 45, 2),   -- Lab for Operating Systems
+(48, '2025-33457', 25, 1),   -- Lecture for AI
+(49, '2025-33457', 35, 4),   -- Seminar for AI
+(50, '2025-44568', 28, 1),   -- Lecture for Machine Learning
+(51, '2025-44568', 50, 2),   -- Lab for Machine Learning
+(52, '2025-55679', 32, 1),   -- Lecture for Data Science
+(53, '2025-55679', 40, 3),   -- Tutorial for Data Science
+(54, '2025-66780', 26, 1),   -- Lecture for Cloud Computing
+(55, '2025-66780', 38, 2),   -- Lab for Cloud Computing
+(56, '2025-77891', 22, 1),   -- Lecture for Cybersecurity
+(57, '2025-77891', 30, 4),   -- Seminar for Cybersecurity
+(58, '2025-88902', 29, 1),   -- Lecture for Mobile Development
+(59, '2025-88902', 42, 2),   -- Lab for Mobile Development
+(60, '2025-99013', 27, 1),   -- Lecture for Software Testing
+(61, '2025-99013', 35, 3),   -- Tutorial for Software Testing
+(62, '2025-10124', 33, 1),   -- Lecture for Project Management
+(63, '2025-10124', 25, 4);   -- Seminar for Project Management
 
 -- Insert data into skill_set
 INSERT INTO skill_set (skill, employment_id) VALUES
@@ -150,7 +201,11 @@ INSERT INTO skill_set (skill, employment_id) VALUES
 ('Object Oriented Programming', 'EMP007'),
 ('System Design', 'EMP008'),
 ('Linear Algebra', 'EMP002'),
-('Human-Computer Interaction', 'EMP003');
+('Human-Computer Interaction', 'EMP003'),
+('Networking', 'EMP009'),        -- TA skills
+('Operating Systems', 'EMP010'),  -- TA skills
+('Python Programming', 'EMP011'), -- TA skills
+('Java Programming', 'EMP012');   -- TA skills
 
 -- Insert data into employee_activity
 INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
@@ -200,5 +255,29 @@ INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
 ('EMP008', 42, '2025-93857'),
 ('EMP001', 43, '2025-93857'), 
 ('EMP008', 43, '2025-93857'),
-('EMP006', 43, '2025-93857');
+('EMP006', 43, '2025-93857'),
+('EMP009', 44, '2025-11235'),  -- TA for Computer Networks Lecture
+('EMP009', 45, '2025-11235'),  -- TA for Computer Networks Lab
+('EMP010', 46, '2025-22346'),  -- TA for Operating Systems Lecture
+('EMP010', 47, '2025-22346'),  -- TA for Operating Systems Lab
+('EMP011', 48, '2025-33457'),  -- TA for AI Lecture
+('EMP011', 49, '2025-33457'),  -- TA for AI Seminar
+('EMP012', 50, '2025-44568'),  -- TA for Machine Learning Lecture
+('EMP012', 51, '2025-44568'),  -- TA for Machine Learning Lab
+('EMP009', 52, '2025-55679'),  -- TA for Data Science Lecture
+('EMP009', 53, '2025-55679'),  -- TA for Data Science Tutorial
+('EMP010', 54, '2025-66780'),  -- TA for Cloud Computing Lecture
+('EMP010', 55, '2025-66780'),  -- TA for Cloud Computing Lab
+('EMP011', 56, '2025-77891'),  -- TA for Cybersecurity Lecture
+('EMP011', 57, '2025-77891'),  -- TA for Cybersecurity Seminar
+('EMP012', 58, '2025-88902'),  -- TA for Mobile Development Lecture
+('EMP012', 59, '2025-88902'),  -- TA for Mobile Development Lab
+('EMP009', 60, '2025-99013'),  -- TA for Software Testing Lecture
+('EMP009', 61, '2025-99013'),  -- TA for Software Testing Tutorial
+('EMP010', 62, '2025-10124'),  -- TA for Project Management Lecture
+('EMP010', 63, '2025-10124');  -- TA for Project Management Semina
+
+r
+
+
 
