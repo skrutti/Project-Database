@@ -1,31 +1,30 @@
--- Insert data into course_layout - 10 courses with random course codes
-INSERT INTO course_layout (course_code, course_name, min_students, max_students, hp) VALUES
-('AB1234', 'Data Storage Paradigms', 50, 250, 7.5),
-('CD5678', 'Discrete Mathematics', 50, 150, 7.5),
-('EF9012', 'Object Oriented Programming', 40, 200, 6.0),
-('GH3456', 'Web Development', 30, 100, 7.5),
-('IJ7890', 'Software Engineering', 60, 300, 9.0),
-('KL1234', 'Algorithms and Data Structures', 45, 180, 8.0),
-('MN5678', 'Database Design', 35, 120, 6.5),
-('OP9012', 'Linear Algebra', 55, 160, 7.0),
-('QR3456', 'Programming Fundamentals', 40, 150, 5.0),
-('ST7890', 'Human-Computer Interaction', 25, 80, 6.0);
--- ('XD2447','erat neque',31,96,'7.5');
+-- Insert data into course_layout - 10 courses
+INSERT INTO course_layout (course_id, course_code, course_name, min_students, max_students, hp) VALUES
+(1, 'AB1234', 'Data Storage Paradigms', 50, 250, 7.5),
+(2, 'CD5678', 'Discrete Mathematics', 50, 150, 7.5),
+(3, 'EF9012', 'Object Oriented Programming', 40, 200, 6.0),
+(4, 'GH3456', 'Web Development', 30, 100, 7.5),
+(5, 'IJ7890', 'Software Engineering', 60, 300, 9.0),
+(6, 'KL1234', 'Algorithms and Data Structures', 45, 180, 8.0),
+(7, 'MN5678', 'Database Design', 35, 120, 6.5),
+(8, 'OP9012', 'Linear Algebra', 55, 160, 7.0),
+(9, 'QR3456', 'Programming Fundamentals', 40, 150, 5.0),
+(10, 'ST7890', 'Human-Computer Interaction', 25, 80, 6.0);
 
 -- Insert data into department
-INSERT INTO department (department_name, manager) VALUES
-('Computer Science', 'EMP001'),
-('Mathematics', 'EMP002'),
-('Information Systems', 'EMP003'),
-('Software Engineering', 'EMP004');
+INSERT INTO department (department_id, department_name, manager) VALUES
+(1, 'Computer Science', 'EMP001'),
+(2, 'Mathematics', 'EMP002'),
+(3, 'Information Systems', 'EMP003'),
+(4, 'Software Engineering', 'EMP004');
 
 -- Insert data into job_title
-INSERT INTO job_title (job_title) VALUES
-('Professor'),
-('Associate Professor'),
-('Assistant Professor'),
-('PhD Student'),
-('Lecturer');
+INSERT INTO job_title (job_title_id, job_title) VALUES
+(1, 'Professor'),
+(2, 'Associate Professor'),
+(3, 'Assistant Professor'),
+(4, 'PhD Student'),
+(5, 'Lecturer');
 
 -- Insert data into person
 INSERT INTO person (personal_number, first_name, last_name, address) VALUES
@@ -49,66 +48,67 @@ INSERT INTO phone_number (phone_nr, personal_number) VALUES
 (789012345, '199107077890'),
 (890123456, '199208088901');
 
--- Insert data into teaching_activity
-INSERT INTO teaching_activity (activity_name, factor) VALUES
-('Lecture', 3.6),
-('Lab', 2.4),
-('Tutorial', 2.4),
-('Seminar', 1.8),
-('Examination', 1.0),
-('Administration', 1.0),
-('Others', 1.0);
-
-INSERT INTO study_period(period) VALUES
+-- Insert data into study_period
+INSERT INTO study_period (period) VALUES
 ('P1'),
 ('P2'),
 ('P3'),
 ('P4');
 
+-- Insert data into teaching_activity
+INSERT INTO teaching_activity (teaching_id, activity_name, factor) VALUES
+(1, 'Lecture', 3.6),
+(2, 'Lab', 2.4),
+(3, 'Tutorial', 2.4),
+(4, 'Seminar', 1.8),
+(5, 'Examination', 1.0),
+(6, 'Administration', 1.0),
+(7, 'Others', 1.0);
+
 -- Insert data into course_instance
-INSERT INTO course_instance (instance_id, num_students, study_period, study_year, course_id) VALUES
-('2025-12345', 200, 'P2', 2025, 1),
-('2025-23456', 150, 'P1', 2025, 2),
-('2025-34567', 180, 'P3', 2025, 3),
-('2025-45678', 90, 'P2', 2025, 4),
-('2025-56789', 120, 'P1', 2025, 5),
-('2025-67890', 250, 'P4', 2025, 6),
-('2025-78901', 110, 'P3', 2025, 7),
-('2025-89012', 140, 'P1', 2025, 8),
-('2025-90123', 85, 'P4', 2025, 9),
-('2025-01234', 70, 'P2', 2025, 10);
+INSERT INTO course_instance (instance_id, num_students, study_year, course_id, period) VALUES
+('2025-12345', 200, 2025, 1, 'P2'),
+('2025-23456', 150, 2025, 2, 'P1'),
+('2025-34567', 180, 2025, 3, 'P3'),
+('2025-45678', 90, 2025, 4, 'P2'),
+('2025-56789', 120, 2025, 5, 'P1'),
+('2025-67890', 250, 2025, 6, 'P4'),
+('2025-78901', 110, 2025, 7, 'P3'),
+('2025-89012', 140, 2025, 8, 'P1'),
+('2025-90123', 85, 2025, 9, 'P4'),
+('2025-01234', 70, 2025, 10, 'P2');
 
 -- Insert data into employee
-INSERT INTO employee (employment_id, salary, supervisor, department_name, personal_number, job_title) VALUES
-('EMP001', 65000, NULL, 'Computer Science', '198501011234', 'Professor'),
-('EMP002', 60000, 'EMP001', 'Mathematics', '198602022345', 'Associate Professor'),
-('EMP003', 55000, 'EMP001', 'Information Systems', '198703033456', 'Assistant Professor'),
-('EMP004', 58000, 'EMP001', 'Software Engineering', '198804044567', 'Associate Professor'),
-('EMP005', 45000, 'EMP002', 'Mathematics', '198905055678', 'PhD Student'),
-('EMP006', 48000, 'EMP003', 'Information Systems', '199006066789', 'Lecturer'),
-('EMP007', 52000, 'EMP004', 'Software Engineering', '199107077890', 'Assistant Professor'),
-('EMP008', 47000, 'EMP004', 'Software Engineering', '199208088901', 'PhD Student');
+INSERT INTO employee (employment_id, salary, supervisor, personal_number, department_id, job_title_id) VALUES
+('EMP001', 65000, NULL, '198501011234', 1, 1),
+('EMP002', 60000, 'EMP001', '198602022345', 2, 2),
+('EMP003', 55000, 'EMP001', '198703033456', 3, 3),
+('EMP004', 58000, 'EMP001', '198804044567', 4, 2),
+('EMP005', 45000, 'EMP002', '198905055678', 2, 4),
+('EMP006', 48000, 'EMP003', '199006066789', 3, 5),
+('EMP007', 52000, 'EMP004', '199107077890', 4, 3),
+('EMP008', 47000, 'EMP004', '199208088901', 4, 4);
 
 -- Insert data into planned_activity
-INSERT INTO planned_activity (activity_id, planned_hours, instance_id, activity_name) VALUES
-(1, 20, '2025-12345', 'Lecture'),
-(2, 80, '2025-12345', 'Tutorial'),
-(3, 40, '2025-12345', 'Lab'),
-(4, 80, '2025-12345', 'Seminar'),
-(5, 650, '2025-12345', 'Others'),
-(6, 44, '2025-23456', 'Lecture'),
-(7, 64, '2025-23456', 'Seminar'),
-(8, 200, '2025-23456', 'Others'),
-(9, 30, '2025-34567', 'Lecture'),
-(10, 60, '2025-34567', 'Lab'),
-(11, 25, '2025-45678', 'Lecture'),
-(12, 50, '2025-45678', 'Tutorial'),
-(13, 35, '2025-56789', 'Lecture'),
-(14, 45, '2025-67890', 'Lab'),
-(15, 55, '2025-78901', 'Seminar'),
-(16, 40, '2025-89012', 'Lecture'),
-(17, 30, '2025-90123', 'Tutorial'),
-(18, 20, '2025-01234', 'Lecture');
+INSERT INTO planned_activity (activity_id, instance_id, planned_hours, teaching_id) VALUES
+(1, '2025-12345', 20, 1),
+(2, '2025-12345', 80, 3),
+(3, '2025-12345', 40, 2),
+(4, '2025-12345', 80, 4),
+(5, '2025-12345', 650, 7),
+(6, '2025-23456', 44, 1),
+(7, '2025-23456', 64, 4),
+(8, '2025-23456', 200, 7),
+(9, '2025-34567', 30, 1),
+(10, '2025-34567', 60, 2),
+(11, '2025-45678', 25, 1),
+(12, '2025-45678', 50, 3),
+(13, '2025-56789', 35, 1),
+(14, '2025-67890', 45, 2),
+(15, '2025-78901', 55, 4),
+(16, '2025-89012', 40, 1),
+(17, '2025-90123', 30, 3),
+(18, '2025-01234', 20, 1);
 
 -- Insert data into skill_set
 INSERT INTO skill_set (skill, employment_id) VALUES
@@ -124,22 +124,22 @@ INSERT INTO skill_set (skill, employment_id) VALUES
 ('Human-Computer Interaction', 'EMP003');
 
 -- Insert data into employee_activity
-INSERT INTO employee_activity (activity_id, employment_id) VALUES
-(1, 'EMP001'),
-(2, 'EMP005'),
-(3, 'EMP008'),
-(4, 'EMP006'),
-(5, 'EMP001'),
-(6, 'EMP002'),
-(7, 'EMP003'),
-(8, 'EMP002'),
-(9, 'EMP004'),
-(10, 'EMP007'),
-(11, 'EMP003'),
-(12, 'EMP006'),
-(13, 'EMP004'),
-(14, 'EMP007'),
-(15, 'EMP003'),
-(16, 'EMP002'),
-(17, 'EMP005'),
-(18, 'EMP001');
+INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
+('EMP001', 1, '2025-12345'),
+('EMP005', 2, '2025-12345'),
+('EMP008', 3, '2025-12345'),
+('EMP006', 4, '2025-12345'),
+('EMP001', 5, '2025-12345'),
+('EMP002', 6, '2025-23456'),
+('EMP003', 7, '2025-23456'),
+('EMP002', 8, '2025-23456'),
+('EMP004', 9, '2025-34567'),
+('EMP007', 10, '2025-34567'),
+('EMP003', 11, '2025-45678'),
+('EMP006', 12, '2025-45678'),
+('EMP004', 13, '2025-56789'),
+('EMP007', 14, '2025-67890'),
+('EMP003', 15, '2025-78901'),
+('EMP002', 16, '2025-89012'),
+('EMP005', 17, '2025-90123'),
+('EMP001', 18, '2025-01234');
