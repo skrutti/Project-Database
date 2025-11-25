@@ -1,0 +1,20 @@
+ SELECT
+     cl.course_code,
+     ci.instance_id,
+	 cl.hp,
+     ci.period,
+	 ci.num_students,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Lecture')) as lecture_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Lab')) as lab_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Tutorial')) as tutorial_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Seminar')) as seminar_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Others')) as other_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Examination')) as exam_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Administrattion')) as admin_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor)) as total_calculated_hours
+ FROM course_instance ci
+ JOIN course_layout cl ON ci.course_id = cl.course_id
+ JOIN planned_activity pa ON ci.instance_id = pa.instance_id
+ JOIN teaching_activity ta ON pa.teaching_id = ta.teaching_id
+ WHERE ci.study_year = 2025
+ GROUP BY ci.instance_id, cl.course_code, cl.hp, ci.num_students, ci.period;
