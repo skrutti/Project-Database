@@ -147,3 +147,5 @@ ALTER TABLE employee_activity ADD CONSTRAINT FK_employee_activity_0 FOREIGN KEY 
 ALTER TABLE employee_activity ADD CONSTRAINT FK_employee_activity_1 FOREIGN KEY (activity_id,instance_id) REFERENCES planned_activity (activity_id,instance_id);
 
 
+--DATA should be moved to second file
+  -- ('XD2447','erat neque',31,96,'7.5'),
