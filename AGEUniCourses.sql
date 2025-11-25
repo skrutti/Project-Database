@@ -34,7 +34,7 @@ ALTER TABLE department ADD CONSTRAINT PK_department PRIMARY KEY (department_id);
 
 CREATE TABLE job_title (
  job_title_id INT NOT NULL,
- job_title VARCHAR(20) NOT NULL
+ job_title_name VARCHAR(20) NOT NULL
 );
 
 ALTER TABLE job_title ADD CONSTRAINT PK_job_title PRIMARY KEY (job_title_id);

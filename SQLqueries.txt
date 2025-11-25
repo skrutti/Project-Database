@@ -1,3 +1,4 @@
+ -- QUERY 1
  SELECT
      cl.course_code,
      ci.instance_id,
@@ -10,7 +11,7 @@
      ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Seminar')) as seminar_hours,
      ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Others')) as other_hours,
      ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Examination')) as exam_hours,
-     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Administrattion')) as admin_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Administration')) as admin_hours,
      ROUND(SUM(pa.planned_hours * ta.factor)) as total_calculated_hours
  FROM course_instance ci
  JOIN course_layout cl ON ci.course_id = cl.course_id
@@ -18,3 +19,36 @@
  JOIN teaching_activity ta ON pa.teaching_id = ta.teaching_id
  WHERE ci.study_year = 2025
  GROUP BY ci.instance_id, cl.course_code, cl.hp, ci.num_students, ci.period;
+ 
+ 
+ 
+ 
+ 
+ -- QUERY 2
+ 
+ SELECT
+     cl.course_code,
+     ci.instance_id,
+	 cl.hp,
+	 concat(pe.first_name, ' ', pe.last_name) as full_name,
+	 jt.job_title_name,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Lecture')) as lecture_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Lab')) as lab_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Tutorial')) as tutorial_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Seminar')) as seminar_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Others')) as other_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Examination')) as exam_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor) FILTER (WHERE ta.activity_name = 'Administration')) as admin_hours,
+     ROUND(SUM(pa.planned_hours * ta.factor)) as total_calculated_hours
+ FROM course_instance ci
+ JOIN course_layout cl ON ci.course_id = cl.course_id
+ JOIN planned_activity pa ON ci.instance_id = pa.instance_id
+ JOIN teaching_activity ta ON pa.teaching_id = ta.teaching_id
+ JOIN employee_activity ea ON pa.activity_id = ea.activity_id
+ JOIN employee em ON ea.employment_id = em.employment_id
+ JOIN person pe ON em.personal_number = pe.personal_number
+ JOIN job_title jt ON em.job_title_id = jt.job_title_id
+ WHERE ci.study_year = 2025
+ GROUP BY ci.instance_id, cl.course_code, jt.job_title_name, cl.hp, pe.first_name, pe.last_name;
+ 
+ --Query 3

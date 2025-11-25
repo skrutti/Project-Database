@@ -9,7 +9,8 @@ INSERT INTO course_layout (course_id, course_code, course_name, min_students, ma
 (7, 'MN5678', 'Database Design', 35, 120, 6.5),
 (8, 'OP9012', 'Linear Algebra', 55, 160, 7.0),
 (9, 'QR3456', 'Programming Fundamentals', 40, 150, 5.0),
-(10, 'ST7890', 'Human-Computer Interaction', 25, 80, 6.0);
+(10, 'ST7890', 'Human-Computer Interaction', 25, 80, 6.0),
+(11, 'XD2447', 'erat neque', 30, 90, 7.5);
 
 -- Insert data into department
 INSERT INTO department (department_id, department_name, manager) VALUES
@@ -19,7 +20,7 @@ INSERT INTO department (department_id, department_name, manager) VALUES
 (4, 'Software Engineering', 'EMP004');
 
 -- Insert data into job_title
-INSERT INTO job_title (job_title_id, job_title) VALUES
+INSERT INTO job_title (job_title_id, job_title_name) VALUES
 (1, 'Professor'),
 (2, 'Associate Professor'),
 (3, 'Assistant Professor'),
@@ -57,12 +58,12 @@ INSERT INTO study_period (period) VALUES
 
 -- Insert data into teaching_activity
 INSERT INTO teaching_activity (teaching_id, activity_name, factor) VALUES
-(1, 'Lecture', 3.6),
-(2, 'Lab', 2.4),
-(3, 'Tutorial', 2.4),
-(4, 'Seminar', 1.8),
-(5, 'Examination', 1.0),
-(6, 'Administration', 1.0),
+(1, 'Lecture', 1.8),
+(2, 'Lab', 1.4),
+(3, 'Tutorial', 1.4),
+(4, 'Seminar', 1.6),
+(5, 'Examination', 1.8),
+(6, 'Administration', 1.2),
 (7, 'Others', 1.0);
 
 -- Insert data into course_instance
@@ -76,7 +77,8 @@ INSERT INTO course_instance (instance_id, num_students, study_year, course_id, p
 ('2025-78901', 110, 2025, 7, 'P3'),
 ('2025-89012', 140, 2025, 8, 'P1'),
 ('2025-90123', 85, 2025, 9, 'P4'),
-('2025-01234', 70, 2025, 10, 'P2');
+('2025-01234', 70, 2025, 10, 'P2'),
+('2025-93857', 45, 2025, 11, 'P1');
 
 -- Insert data into employee
 INSERT INTO employee (employment_id, salary, supervisor, personal_number, department_id, job_title_id) VALUES
@@ -108,7 +110,7 @@ INSERT INTO planned_activity (activity_id, instance_id, planned_hours, teaching_
 (15, '2025-78901', 55, 4),
 (16, '2025-89012', 40, 1),
 (17, '2025-90123', 30, 3),
-(18, '2025-01234', 20, 1);
+(18, '2025-01234', 20, 1),
 
 -- Additional admin and exam activities
 (19, '2025-12345', 15, 6),  -- Admin for Data Storage Paradigms
@@ -130,7 +132,12 @@ INSERT INTO planned_activity (activity_id, instance_id, planned_hours, teaching_
 (35, '2025-90123', 6, 6),   -- Admin for Programming Fundamentals
 (36, '2025-90123', 12, 5),  -- Exam for Programming Fundamentals
 (37, '2025-01234', 5, 6),   -- Admin for Human-Computer Interaction
-(38, '2025-01234', 10, 5);  -- Exam for Human-Computer Interaction
+(38, '2025-01234', 10, 5),  -- Exam for Human-Computer Interaction
+(39, '2025-93857', 7, 5),  -- Exam for Erat Neque
+(40, '2025-93857', 10, 6),  -- Admin for Erat Neque
+(41, '2025-93857', 63, 1),  -- Lectures for Erat Neque
+(42, '2025-93857', 40, 2),  -- Labs for Erat Neque
+(43, '2025-93857', 1444, 3);  -- Tutorial for Erat Neque
 
 -- Insert data into skill_set
 INSERT INTO skill_set (skill, employment_id) VALUES
@@ -164,7 +171,7 @@ INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
 ('EMP003', 15, '2025-78901'),
 ('EMP002', 16, '2025-89012'),
 ('EMP005', 17, '2025-90123'),
-('EMP001', 18, '2025-01234');
+('EMP001', 18, '2025-01234'),
 
 -- Additional assignments for admin and exam activities
 ('EMP001', 19, '2025-12345'),  -- Admin by Professor
@@ -186,5 +193,12 @@ INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
 ('EMP005', 35, '2025-90123'),  -- Admin by PhD Student
 ('EMP005', 36, '2025-90123'),  -- Exam by PhD Student
 ('EMP001', 37, '2025-01234'),  -- Admin by Professor
-('EMP001', 38, '2025-01234');  -- Exam by Professor
+('EMP001', 38, '2025-01234'),  -- Exam by Professor
+('EMP006', 39, '2025-93857'), 
+('EMP006', 40, '2025-93857'), 
+('EMP006', 41, '2025-93857'), 
+('EMP008', 42, '2025-93857'),
+('EMP001', 43, '2025-93857'), 
+('EMP008', 43, '2025-93857'),
+('EMP006', 43, '2025-93857');
 
