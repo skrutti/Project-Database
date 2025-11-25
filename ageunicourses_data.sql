@@ -110,6 +110,28 @@ INSERT INTO planned_activity (activity_id, instance_id, planned_hours, teaching_
 (17, '2025-90123', 30, 3),
 (18, '2025-01234', 20, 1);
 
+-- Additional admin and exam activities
+(19, '2025-12345', 15, 6),  -- Admin for Data Storage Paradigms
+(20, '2025-12345', 25, 5),  -- Exam for Data Storage Paradigms
+(21, '2025-23456', 12, 6),  -- Admin for Discrete Mathematics
+(22, '2025-23456', 20, 5),  -- Exam for Discrete Mathematics
+(23, '2025-34567', 10, 6),  -- Admin for Object Oriented Programming
+(24, '2025-34567', 18, 5),  -- Exam for Object Oriented Programming
+(25, '2025-45678', 8, 6),   -- Admin for Web Development
+(26, '2025-45678', 15, 5),  -- Exam for Web Development
+(27, '2025-56789', 12, 6),  -- Admin for Software Engineering
+(28, '2025-56789', 22, 5),  -- Exam for Software Engineering
+(29, '2025-67890', 10, 6),  -- Admin for Algorithms and Data Structures
+(30, '2025-67890', 20, 5),  -- Exam for Algorithms and Data Structures
+(31, '2025-78901', 8, 6),   -- Admin for Database Design
+(32, '2025-78901', 15, 5),  -- Exam for Database Design
+(33, '2025-89012', 10, 6),  -- Admin for Linear Algebra
+(34, '2025-89012', 18, 5),  -- Exam for Linear Algebra
+(35, '2025-90123', 6, 6),   -- Admin for Programming Fundamentals
+(36, '2025-90123', 12, 5),  -- Exam for Programming Fundamentals
+(37, '2025-01234', 5, 6),   -- Admin for Human-Computer Interaction
+(38, '2025-01234', 10, 5);  -- Exam for Human-Computer Interaction
+
 -- Insert data into skill_set
 INSERT INTO skill_set (skill, employment_id) VALUES
 ('Database Systems', 'EMP001'),
@@ -143,3 +165,26 @@ INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
 ('EMP002', 16, '2025-89012'),
 ('EMP005', 17, '2025-90123'),
 ('EMP001', 18, '2025-01234');
+
+-- Additional assignments for admin and exam activities
+('EMP001', 19, '2025-12345'),  -- Admin by Professor
+('EMP002', 20, '2025-12345'),  -- Exam by Math Professor
+('EMP002', 21, '2025-23456'),  -- Admin by Math Professor
+('EMP002', 22, '2025-23456'),  -- Exam by Math Professor
+('EMP004', 23, '2025-34567'),  -- Admin by Software Eng Professor
+('EMP007', 24, '2025-34567'),  -- Exam by Assistant Professor
+('EMP003', 25, '2025-45678'),  -- Admin by Info Systems Professor
+('EMP006', 26, '2025-45678'),  -- Exam by Lecturer
+('EMP004', 27, '2025-56789'),  -- Admin by Software Eng Professor
+('EMP004', 28, '2025-56789'),  -- Exam by Software Eng Professor
+('EMP007', 29, '2025-67890'),  -- Admin by Assistant Professor
+('EMP007', 30, '2025-67890'),  -- Exam by Assistant Professor
+('EMP003', 31, '2025-78901'),  -- Admin by Info Systems Professor
+('EMP003', 32, '2025-78901'),  -- Exam by Info Systems Professor
+('EMP002', 33, '2025-89012'),  -- Admin by Math Professor
+('EMP002', 34, '2025-89012'),  -- Exam by Math Professor
+('EMP005', 35, '2025-90123'),  -- Admin by PhD Student
+('EMP005', 36, '2025-90123'),  -- Exam by PhD Student
+('EMP001', 37, '2025-01234'),  -- Admin by Professor
+('EMP001', 38, '2025-01234');  -- Exam by Professor
+
