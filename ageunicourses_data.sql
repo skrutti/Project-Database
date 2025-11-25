@@ -59,6 +59,12 @@ INSERT INTO teaching_activity (activity_name, factor) VALUES
 ('Administration', 1.0),
 ('Others', 1.0);
 
+INSERT INTO study_period(period) VALUES
+('P1'),
+('P2'),
+('P3'),
+('P4');
+
 -- Insert data into course_instance
 INSERT INTO course_instance (instance_id, num_students, study_period, study_year, course_id) VALUES
 ('2025-12345', 200, 'P2', 2025, 1),

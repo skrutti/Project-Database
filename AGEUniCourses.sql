@@ -59,10 +59,10 @@ ALTER TABLE phone_number ADD CONSTRAINT PK_phone_number PRIMARY KEY (phone_nr);
 
 
 CREATE TABLE study_period (
- study_period CHAR(2) NOT NULL
+ period CHAR(2) NOT NULL
 );
 
-ALTER TABLE study_period ADD CONSTRAINT PK_study_period PRIMARY KEY (study_period);
+ALTER TABLE study_period ADD CONSTRAINT PK_study_period PRIMARY KEY (period);
 
 
 CREATE TABLE teaching_activity (
@@ -79,7 +79,7 @@ CREATE TABLE course_instance (
  num_students INT,
  study_year INT,
  course_id  INT NOT NULL,
- study_period CHAR(2) NOT NULL
+ period CHAR(2) NOT NULL
 );
 
 ALTER TABLE course_instance ADD CONSTRAINT PK_course_instance PRIMARY KEY (instance_id);
@@ -128,7 +128,7 @@ ALTER TABLE phone_number ADD CONSTRAINT FK_phone_number_0 FOREIGN KEY (personal_
 
 
 ALTER TABLE course_instance ADD CONSTRAINT FK_course_instance_0 FOREIGN KEY (course_id ) REFERENCES course_layout (course_id );
-ALTER TABLE course_instance ADD CONSTRAINT FK_course_instance_1 FOREIGN KEY (study_period) REFERENCES study_period (study_period);
+ALTER TABLE course_instance ADD CONSTRAINT FK_course_instance_1 FOREIGN KEY (period) REFERENCES study_period (period);
 
 
 ALTER TABLE employee ADD CONSTRAINT FK_employee_0 FOREIGN KEY (personal_number) REFERENCES person (personal_number);
