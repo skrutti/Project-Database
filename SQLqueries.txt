@@ -75,7 +75,7 @@
  JOIN employee em ON ea.employment_id = em.employment_id
  JOIN person pe ON em.personal_number = pe.personal_number
  JOIN job_title jt ON em.job_title_id = jt.job_title_id
- WHERE ea.employment_id = 'EMP003'
+ WHERE ea.employment_id = 'EMP001'
  GROUP BY ci.instance_id, cl.course_code, jt.job_title_name, cl.hp, pe.first_name, pe.last_name;
  
  --Query 4

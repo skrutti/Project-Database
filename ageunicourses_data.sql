@@ -97,6 +97,7 @@ INSERT INTO course_instance (instance_id, num_students, study_year, course_id, p
 ('2025-90123', 85, 2025, 9, 'P4'),
 ('2025-01234', 70, 2025, 10, 'P2'),
 ('2025-11235', 45, 2025, 11, 'P3'),
+('2025-93857', 45, 2025, 11, 'P1'),
 ('2025-22346', 110, 2025, 12, 'P1'),
 ('2025-33457', 65, 2025, 13, 'P4'),
 ('2025-44568', 80, 2025, 14, 'P2'),
@@ -277,7 +278,7 @@ INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
 ('EMP010', 62, '2025-10124'),  -- TA for Project Management Lecture
 ('EMP010', 63, '2025-10124');  -- TA for Project Management Semina
 
-r
+
 
 
 
