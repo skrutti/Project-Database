@@ -276,9 +276,4 @@ INSERT INTO employee_activity (employment_id, activity_id, instance_id) VALUES
 ('EMP009', 60, '2025-99013'),  -- TA for Software Testing Lecture
 ('EMP009', 61, '2025-99013'),  -- TA for Software Testing Tutorial
 ('EMP010', 62, '2025-10124'),  -- TA for Project Management Lecture
-('EMP010', 63, '2025-10124');  -- TA for Project Management Semina
-
-
-
-
-
+('EMP010', 63, '2025-10124');  -- TA for Project Management Seminar
