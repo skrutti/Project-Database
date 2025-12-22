@@ -89,6 +89,7 @@
  JOIN employee_activity ea ON pa.activity_id = ea.activity_id
  JOIN employee em ON ea.employment_id = em.employment_id
  JOIN person pe ON em.personal_number = pe.personal_number
- WHERE ci.study_year = 2025 AND ci.period = 'P1'
+ WHERE ci.study_year = 2025 AND ci.period = 'P1' 
  GROUP BY em.employment_id, ci.period, pe.first_name, pe.last_name
+ HAVING COUNT(DISTINCT ea.instance_id) > 2
  ORDER BY ci.period;
